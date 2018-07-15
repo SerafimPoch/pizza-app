@@ -27,15 +27,6 @@ input:focus {
   outline: none;
 }
 
-.pizza_img {
-  width: 230px;
-  height: 230px;
-  transition: all ease-out 0.3s;
-}
-.pizza_img:hover {
-  transform: scale(1.15);
-}
-
 .link_reg {
   background-color: #e57e2d;
   color: white;

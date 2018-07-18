@@ -6,12 +6,11 @@ import { redirectLog } from "../../../services/selectors/supportApi";
 
 const Status = ({ login, history }) => {
   const { success, error } = login;
-
   redirectLog(success, history);
 
   return (
     <Fragment>
-      {success ? <SuccessText /> : <ErrorText text={error} />}
+      {success && success ? <SuccessText /> : <ErrorText text={error} />}
     </Fragment>
   );
 };

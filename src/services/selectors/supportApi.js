@@ -4,9 +4,9 @@ export const parseJwtClaims = jwtToken => {
   return JSON.parse(window.atob(base64));
 };
 
-export const redirectReg = history => {
+export const redirectReg = (success, history) => {
   setTimeout(() => {
-    history.push("/login");
+    return success ? history.push("/login") : false;
   }, 1000);
 };
 

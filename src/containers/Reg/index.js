@@ -38,7 +38,7 @@ class Reg extends Component {
         <Header />
         <ContainerReg>
           <Form onSubmit={this.props.handleSubmit(this.reg)}>
-            <Content list={this.props.list} />
+            <Content list={this.props.list} reg={this.props.create} />
           </Form>
         </ContainerReg>
         <Footer />

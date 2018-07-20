@@ -8,7 +8,6 @@ import {
 
 export const loginUser = userData => async dispatch => {
   dispatch({ type: LOGIN_USER_START });
-  console.log(userData);
   try {
     const data = await postLogin(userData);
 

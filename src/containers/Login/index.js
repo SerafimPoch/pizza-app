@@ -1,7 +1,5 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import { reduxForm } from "redux-form";
-import Header from "../Header";
-import Footer from "../Footer";
 import Content from "../../components/login/";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./loginContainer";
@@ -22,15 +20,11 @@ class Login extends Component {
 
   render() {
     return (
-      <Fragment>
-        <Header />
-        <ContainerLogin>
-          <Form onSubmit={this.props.handleSubmit(this.loginPost)}>
-            <Content login={this.props.login} />
-          </Form>
-        </ContainerLogin>
-        <Footer />
-      </Fragment>
+      <ContainerLogin>
+        <Form onSubmit={this.props.handleSubmit(this.loginPost)}>
+          <Content login={this.props.login} />
+        </Form>
+      </ContainerLogin>
     );
   }
 }

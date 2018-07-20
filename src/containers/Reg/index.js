@@ -1,6 +1,4 @@
-import React, { Component, Fragment } from "react";
-import Header from "../Header";
-import Footer from "../Footer/";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { mapStateToProps, mapDispatchToProps } from "./regContainer";
@@ -34,15 +32,11 @@ class Reg extends Component {
 
   render() {
     return (
-      <Fragment>
-        <Header />
-        <ContainerReg>
-          <Form onSubmit={this.props.handleSubmit(this.reg)}>
-            <Content list={this.props.list} reg={this.props.create} />
-          </Form>
-        </ContainerReg>
-        <Footer />
-      </Fragment>
+      <ContainerReg>
+        <Form onSubmit={this.props.handleSubmit(this.reg)}>
+          <Content list={this.props.list} reg={this.props.create} />
+        </Form>
+      </ContainerReg>
     );
   }
 }

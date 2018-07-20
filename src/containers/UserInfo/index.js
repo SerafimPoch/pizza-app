@@ -1,7 +1,5 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "../Header";
-import Footer from "../Footer/";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./userInfoContainer";
 import {
@@ -25,27 +23,23 @@ class UserInfo extends Component {
   render() {
     const { username, uuid, email, created_at, last_login } = this.props.user;
     return (
-      <Fragment>
-        <Header />
-        <ContainerUser>
-          <UserText>
-            <p>username: {username}</p>
-            <p>uuid: {uuid}</p>
-            <p>email: {email}</p>
-            <p>created_at: {created_at}</p>
-            <p>last_login: {last_login}</p>
-          </UserText>
-          <ButtonContainer>
-            <PizzaList>
-              <Link to="/pizza-list">PIZZA LIST</Link>
-            </PizzaList>
-            <LogOut onClick={this.logout}>
-              <Link to="/login">LOG OUT</Link>
-            </LogOut>
-          </ButtonContainer>
-        </ContainerUser>
-        <Footer />
-      </Fragment>
+      <ContainerUser>
+        <UserText>
+          <p>username: {username}</p>
+          <p>uuid: {uuid}</p>
+          <p>email: {email}</p>
+          <p>created_at: {created_at}</p>
+          <p>last_login: {last_login}</p>
+        </UserText>
+        <ButtonContainer>
+          <PizzaList>
+            <Link to="/pizza-list">PIZZA LIST</Link>
+          </PizzaList>
+          <LogOut onClick={this.logout}>
+            <Link to="/login">LOG OUT</Link>
+          </LogOut>
+        </ButtonContainer>
+      </ContainerUser>
     );
   }
 }

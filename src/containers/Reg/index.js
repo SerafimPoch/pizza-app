@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { mapStateToProps, mapDispatchToProps } from "./regContainer";
 import { ContainerReg, Form } from "./style";
-import Content from "../../components/reg/";
+import Content from "../../components/Reg/";
 
 class Reg extends Component {
   componentDidMount() {

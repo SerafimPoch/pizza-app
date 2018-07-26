@@ -1,6 +1,6 @@
 import React from "react";
 import { FooterContainer } from "./style";
-import FooterText from "../../components/footer/";
+import FooterText from "../../components/Footer/";
 
 export default () => {
   return (

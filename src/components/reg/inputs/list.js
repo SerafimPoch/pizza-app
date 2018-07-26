@@ -1,18 +1,28 @@
-import React, { Fragment } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { Field } from "redux-form";
 
-export default ({ list }) => {
+const List = ({ list }) => {
   return (
-    <Fragment>
-      <Field required name="store_id" component="select">
-        {list.map(e => {
-          return (
-            <option key={e.id} value={e.id}>
-              {e.name}
-            </option>
-          );
-        })}
-      </Field>
-    </Fragment>
+    <Field required name="store_id" component="select">
+      {list.map(e => {
+        return (
+          <option key={e.id} value={e.id}>
+            {e.name}
+          </option>
+        );
+      })}
+    </Field>
   );
 };
+
+List.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string
+    })
+  )
+};
+
+export default List;

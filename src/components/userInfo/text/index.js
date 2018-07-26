@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { UserTextContainer } from "./style";
 
-export default ({ info }) => {
+const Text = ({ info }) => {
   const { username, uuid, email, created_at, last_login } = info;
   return (
     <UserTextContainer>
@@ -13,3 +14,9 @@ export default ({ info }) => {
     </UserTextContainer>
   );
 };
+
+Text.propTypes = {
+  info: PropTypes.objectOf(PropTypes.string)
+};
+
+export default Text;

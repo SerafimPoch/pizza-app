@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm } from "redux-form";
-import Content from "../../components/Login/";
+import Content from "../../components/login/";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./loginContainer";
 import { ContainerLogin, Form } from "./style";

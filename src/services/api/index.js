@@ -1,4 +1,4 @@
-import { get } from "./methods";
+import { get, post } from "./methods";
 import { store_links } from "./baseUrls";
 
 export const getStore = () => {
@@ -13,4 +13,6 @@ export const getTicket = () => {
   return get(store_links.ticket, JSON.parse(localStorage.getItem("token")));
 };
 
-
+export const createUserApi = userData => {
+  return post(userData, store_links.userCreate);
+};

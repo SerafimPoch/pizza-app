@@ -16,3 +16,7 @@ export const getTicket = () => {
 export const createUserApi = userData => {
   return post(userData, store_links.userCreate);
 };
+
+export const postLogin = userData => {
+  return post(userData, store_links.userLogin);
+};

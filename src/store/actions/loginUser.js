@@ -1,4 +1,4 @@
-import { postLogin } from "../../services/api/methods";
+import { postLogin } from "../../services/api/";
 import {
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,

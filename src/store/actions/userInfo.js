@@ -5,19 +5,15 @@ import {
   USER_INFO_FAILURE
 } from "./actionTypes";
 
-export const userInf = () => async dispatch => {
-  dispatch({ type: USER_INFO_START });
-  try {
-    const data = await userInfo();
-    dispatch({
-      type: USER_INFO_SUCCESS,
-      payload: data
-    });
-  } catch (error) {
-    dispatch({
-      type: USER_INFO_FAILURE,
-      payload: error,
-      error: true
-    });
-  }
+const userInfoStart = () => ({ type: USER_INFO_START });
+
+const userInfoSuccess = data => ({ type: USER_INFO_SUCCESS, payload: data });
+
+const userInfoFailure = error => ({ type: USER_INFO_FAILURE, payload: error });
+
+export const userInf = () => dispatch => {
+  dispatch(userInfoStart());
+  return userInfo()
+    .then(data => dispatch(userInfoSuccess(data)))
+    .catch(error => dispatch(userInfoFailure(error)));
 };

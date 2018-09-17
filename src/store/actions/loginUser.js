@@ -2,28 +2,21 @@ import { postLogin } from "../../services/api/methods";
 import {
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
-  LOGIN_USER_FAILURE,
-  CLEAN_LOGIN_USER
+  LOGIN_USER_FAILURE
 } from "./actionTypes";
 
-export const loginUser = userData => async dispatch => {
-  dispatch({ type: LOGIN_USER_START });
-  try {
-    const data = await postLogin(userData);
+const loginUserStart = () => ({ type: LOGIN_USER_START });
 
-    dispatch({
-      type: LOGIN_USER_SUCCESS,
-      payload: data
-    });
-  } catch (error) {
-    dispatch({
-      type: LOGIN_USER_FAILURE,
-      payload: error,
-      error: true
-    });
-  }
-};
+const loginUserSuccess = data => ({ type: LOGIN_USER_SUCCESS, payload: data });
 
-export const cleanLogin = () => ({
-  type: CLEAN_LOGIN_USER
+const loginUserFailure = error => ({
+  type: LOGIN_USER_FAILURE,
+  payload: error
 });
+
+export const loginUser = userData => dispatch => {
+  dispatch(loginUserStart());
+  return postLogin(userData)
+    .then(data => dispatch(loginUserSuccess(data)))
+    .catch(error => dispatch(loginUserFailure(error)));
+};

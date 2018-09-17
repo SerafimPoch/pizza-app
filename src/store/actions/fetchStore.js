@@ -7,7 +7,7 @@ import {
 
 const fetchStoreStart = () => ({ type: STORE_LIST_START });
 
-const fetchStoreSuccess = body => ({ type: STORE_LIST_SUCCESS, payload: body });
+const fetchStoreSuccess = data => ({ type: STORE_LIST_SUCCESS, payload: data });
 
 const fetchStoreFailure = error => ({
   type: STORE_LIST_FAILURE,
@@ -16,7 +16,7 @@ const fetchStoreFailure = error => ({
 
 export const fetchStore = () => dispatch => {
   dispatch(fetchStoreStart());
-  getStore()
-    .then(body => dispatch(fetchStoreSuccess(body)))
+  return getStore()
+    .then(data => dispatch(fetchStoreSuccess(data)))
     .catch(error => dispatch(fetchStoreFailure(error)));
 };

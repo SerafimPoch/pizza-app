@@ -17,9 +17,9 @@ const createUserFailure = error => ({
   payload: error
 });
 
-export const createUser = userData => async dispatch => {
+export const createUser = userData => dispatch => {
   dispatch(createUserStart);
-  createUserApi(userData)
+  return createUserApi(userData)
     .then(data => dispatch(createUserSuccess(data)))
     .catch(error => dispatch(createUserFailure(error)));
 };

@@ -1,33 +1,31 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { reduxForm } from "redux-form";
 import Content from "../../components/login/";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./loginContainer";
 import { ContainerLogin, Form } from "./style";
 
-class Login extends Component {
-  loginPost = ({ username, password }) => {
+let Login = ({ loginUser, handleSubmit, login }) => {
+  const loginPost = ({ username, password }) => {
     const credentials = {
       username: username,
       password: password
     };
-    return this.props.loginUser(credentials);
+    return loginUser(credentials);
   };
 
-  componentDidUpdate() {
-    localStorage.setItem("token", JSON.stringify(this.props.login.token));
-  }
+  useEffect(() => {
+    localStorage.setItem("token", JSON.stringify(login.token));
+  });
 
-  render() {
-    return (
-      <ContainerLogin>
-        <Form onSubmit={this.props.handleSubmit(this.loginPost)}>
-          <Content login={this.props.login} />
-        </Form>
-      </ContainerLogin>
-    );
-  }
-}
+  return (
+    <ContainerLogin>
+      <Form onSubmit={handleSubmit(loginPost)}>
+        <Content login={login} />
+      </Form>
+    </ContainerLogin>
+  );
+};
 
 Login = reduxForm({
   form: "login"

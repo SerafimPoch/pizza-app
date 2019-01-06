@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { mapStateToProps, mapDispatchToProps } from "./regContainer";
 import { ContainerReg, Form } from "./style";
 import Content from "../../components/reg/";
 
-class Reg extends Component {
-  componentDidMount() {
-    this.props.fetchStore();
-  }
+let Reg = ({ fetchStore, createUser, handleSubmit, list, create }) => {
+  useEffect(() => {
+    fetchStore();
+  });
 
-  reg = ({
+  const reg = ({
     username,
     password,
     password_repeat,
@@ -27,19 +27,17 @@ class Reg extends Component {
       store_password: store_password
     };
 
-    return this.props.createUser(userData);
+    return createUser(userData);
   };
 
-  render() {
-    return (
-      <ContainerReg>
-        <Form onSubmit={this.props.handleSubmit(this.reg)}>
-          <Content list={this.props.list} reg={this.props.create} />
-        </Form>
-      </ContainerReg>
-    );
-  }
-}
+  return (
+    <ContainerReg>
+      <Form onSubmit={handleSubmit(reg)}>
+        <Content list={list} reg={create} />
+      </Form>
+    </ContainerReg>
+  );
+};
 
 Reg = reduxForm({
   form: "reg"

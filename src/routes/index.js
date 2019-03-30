@@ -10,7 +10,7 @@ import UserInfo from '../containers/UserInfo/';
 import createHistory from 'history/createBrowserHistory';
 import CatchError from '../containers/CatchErrors';
 
-export const history = createHistory({ basename: '/' });
+export const history = createHistory({ basename: '/pizza-app' });
 
 export default () => (
   <ConnectedRouter history={history}>

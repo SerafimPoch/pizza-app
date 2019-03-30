@@ -1,5 +1,7 @@
-import { LoginSubmit } from "../../../../components/login/buttons/signIn/style";
+import styled from 'styled-components';
 
-export const LogOut = LoginSubmit.extend`
+import { LoginSubmit } from '../../../../components/login/buttons/signIn/style';
+
+export const LogOut = styled(LoginSubmit)`
   background-color: red;
 `;

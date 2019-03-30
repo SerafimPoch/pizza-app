@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react';
+import { Container } from './style';
 
-class CatchErrors extends React.Component {
+export default class extends React.Component {
   componentDidCatch(error, info) {
     console.log(error, info);
   }
   render() {
-    return this.props.children;
+    return <Container>{this.props.children}</Container>;
   }
 }
-
-export default CatchErrors;

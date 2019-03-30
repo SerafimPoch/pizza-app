@@ -1,3 +1,4 @@
-import { LoginSubmit } from "../../../../components/login/buttons/signIn/style";
+import styled from 'styled-components';
+import { LoginSubmit } from '../../../../components/login/buttons/signIn/style';
 
-export const PizzaList = LoginSubmit.extend``;
+export const PizzaList = styled(LoginSubmit);

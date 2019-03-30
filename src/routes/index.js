@@ -1,16 +1,16 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import { ConnectedRouter } from "react-router-redux";
-import Header from "../containers/Header";
-import Footer from "../containers/Footer";
-import Login from "../containers/Login/";
-import Reg from "../containers/Reg/";
-import PizzaList from "../containers/PizzaList/";
-import UserInfo from "../containers/UserInfo/";
-import createHistory from "history/createBrowserHistory";
-import CatchError from "../containers/CatchErrors";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+import Header from '../containers/Header';
+import Footer from '../containers/Footer';
+import Login from '../containers/Login/';
+import Reg from '../containers/Reg/';
+import PizzaList from '../containers/PizzaList/';
+import UserInfo from '../containers/UserInfo/';
+import createHistory from 'history/createBrowserHistory';
+import CatchError from '../containers/CatchErrors';
 
-export const history = createHistory({ basename: "/pizza-app" });
+export const history = createHistory({ basename: '/' });
 
 export default () => (
   <ConnectedRouter history={history}>

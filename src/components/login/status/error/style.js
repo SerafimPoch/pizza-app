@@ -1,5 +1,6 @@
-import { InfoTextTrue } from "../success/style";
+import styled from 'styled-components';
+import { InfoTextTrue } from '../success/style';
 
-export const InfoTextFalse = InfoTextTrue.extend`
+export const InfoTextFalse = styled(InfoTextTrue)`
   color: red;
 `;

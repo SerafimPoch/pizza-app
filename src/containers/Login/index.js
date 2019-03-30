@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { reduxForm } from "redux-form";
-import Content from "../../components/login/";
-import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "./loginContainer";
-import { ContainerLogin, Form } from "./style";
+import React, { useEffect } from 'react';
+import { reduxForm } from 'redux-form';
+import Content from '../../components/login/';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from './loginContainer';
+import { ContainerLogin, Form } from './style';
 
 let Login = ({ loginUser, handleSubmit, login }) => {
   const loginPost = ({ username, password }) => {
@@ -15,7 +15,7 @@ let Login = ({ loginUser, handleSubmit, login }) => {
   };
 
   useEffect(() => {
-    localStorage.setItem("token", JSON.stringify(login.token));
+    localStorage.setItem('token', JSON.stringify(login.token));
   });
 
   return (
@@ -28,7 +28,7 @@ let Login = ({ loginUser, handleSubmit, login }) => {
 };
 
 Login = reduxForm({
-  form: "login"
+  form: 'login'
 })(Login);
 
 export default connect(

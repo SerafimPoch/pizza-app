@@ -1,9 +1,9 @@
-import { postLogin } from "../../services/api/";
+import api from '../../services/api';
 import {
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILURE
-} from "./actionTypes";
+} from './actionTypes';
 
 const loginUserStart = () => ({ type: LOGIN_USER_START });
 
@@ -14,9 +14,13 @@ const loginUserFailure = error => ({
   payload: error
 });
 
-export const loginUser = userData => dispatch => {
+export const loginUser = userData => async dispatch => {
   dispatch(loginUserStart());
-  return postLogin(userData)
-    .then(data => dispatch(loginUserSuccess(data)))
-    .catch(error => dispatch(loginUserFailure(error)));
+
+  try {
+    const data = await api.login(userData);
+    dispatch(loginUserSuccess(data));
+  } catch (err) {
+    dispatch(loginUserFailure(err));
+  }
 };

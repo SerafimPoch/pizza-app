@@ -1,9 +1,9 @@
-import { getStore } from "../../services/api/";
+import api from '../../services/api';
 import {
   STORE_LIST_START,
   STORE_LIST_SUCCESS,
   STORE_LIST_FAILURE
-} from "./actionTypes";
+} from './actionTypes';
 
 const fetchStoreStart = () => ({ type: STORE_LIST_START });
 
@@ -14,9 +14,13 @@ const fetchStoreFailure = error => ({
   payload: error
 });
 
-export const fetchStore = () => dispatch => {
+export const fetchStore = () => async dispatch => {
   dispatch(fetchStoreStart());
-  return getStore()
-    .then(data => dispatch(fetchStoreSuccess(data)))
-    .catch(error => dispatch(fetchStoreFailure(error)));
+
+  try {
+    const data = await api.getStore();
+    dispatch(fetchStoreSuccess(data));
+  } catch (err) {
+    dispatch(fetchStoreFailure(err));
+  }
 };

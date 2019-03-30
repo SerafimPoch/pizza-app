@@ -1,22 +1,12 @@
-import { get, post } from "./methods";
-import { store_links } from "./baseUrls";
+import axios from 'axios';
 
-export const getStore = () => {
-  return get(store_links.storelist);
-};
+const api = axios.create({
+  baseURL: 'https://pizza-tele.ga/api/v1'
+});
 
-export const userInfo = () => {
-  return get(store_links.userInfo, JSON.parse(localStorage.getItem("token")));
-};
-
-export const getTicket = () => {
-  return get(store_links.ticket, JSON.parse(localStorage.getItem("token")));
-};
-
-export const createUserApi = userData => {
-  return post(userData, store_links.userCreate);
-};
-
-export const postLogin = userData => {
-  return post(userData, store_links.userLogin);
+export default {
+  login: async userData => await api.post('user/login', userData),
+  getStore: async () => await api.get('store/list'),
+  userInfo: async () => await api.get('user/my_info'),
+  createUser: async userData => await api.post('user/create', userData)
 };

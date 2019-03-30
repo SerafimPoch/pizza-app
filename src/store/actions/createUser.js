@@ -1,9 +1,9 @@
+import api from '../../services/api';
 import {
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
   CREATE_USER_FAILURE
-} from "./actionTypes";
-import { createUserApi } from "../../services/api/";
+} from './actionTypes';
 
 const createUserStart = () => ({ type: CREATE_USER_START });
 
@@ -17,9 +17,13 @@ const createUserFailure = error => ({
   payload: error
 });
 
-export const createUser = userData => dispatch => {
+export const createUser = userData => async dispatch => {
   dispatch(createUserStart);
-  return createUserApi(userData)
-    .then(data => dispatch(createUserSuccess(data)))
-    .catch(error => dispatch(createUserFailure(error)));
+
+  try {
+    const data = await api.createUser(userData);
+    dispatch(createUserSuccess(data));
+  } catch (err) {
+    dispatch(createUserFailure(err));
+  }
 };

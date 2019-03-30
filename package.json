@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://serafimpoch.github.io/pizza-app/",
   "dependencies": {
+    "axios": "^0.18.0",
     "gh-pages": "^1.1.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.6",

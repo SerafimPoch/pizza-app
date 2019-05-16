@@ -1,4 +1,4 @@
-import { loginUser } from "../../store/actions/loginUser";
+import { signIn } from "../../store/actions/sign-in";
 
 export const mapStateToProps = state => {
   return {
@@ -7,5 +7,5 @@ export const mapStateToProps = state => {
 };
 
 export const mapDispatchToProps = {
-  loginUser
+  signIn
 };

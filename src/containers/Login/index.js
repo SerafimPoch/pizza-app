@@ -4,19 +4,21 @@ import Content from '../../components/login/';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from './loginContainer';
 import { ContainerLogin, Form } from './style';
+import api from '../../services/api'
 
-let Login = ({ loginUser, handleSubmit, login }) => {
+let Login = ({ signIn, handleSubmit, login }) => {
   const loginPost = ({ username, password }) => {
     const credentials = {
       username: username,
       password: password
     };
-    return loginUser(credentials);
+    return signIn(credentials)
   };
 
   useEffect(() => {
     localStorage.setItem('token', JSON.stringify(login.token));
-  });
+    api.getNinja().then(e => console.log(e))
+  }, []);
 
   return (
     <ContainerLogin>
